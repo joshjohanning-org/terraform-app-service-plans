@@ -19,6 +19,13 @@ resource "random_integer" "ri" {
   max = 99999
 }
 
+# Generate a random integer to create a globally unique name
+resource "random_integer" "ri2" {
+
+  min = 1
+  max = 9
+}
+
 # Create the resource group
 resource "azurerm_resource_group" "rg" {
   name     = "myResourceGroup-${random_integer.ri.result}"
