@@ -12,14 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      # - name: install tflint
-      #   run: |
-      #     curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
       - uses: terraform-linters/setup-tflint@v3
-        name: Setup TFLint
-      
-      - name: run tflint
-        run: |
-          tflint --version
-          tflint --init
-          tflint --recursive
+      - uses: terraform-linters/tflint-load-config-action@v1
+        with:
+          source-repo: me/tflint-config
+      - run: tflint -f compact
