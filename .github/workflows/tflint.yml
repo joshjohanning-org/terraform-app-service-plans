@@ -13,7 +13,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: terraform-linters/setup-tflint@v3
-      - uses: terraform-linters/tflint-load-config-action@v1
-        with:
-          source-repo: me/tflint-config
-      - run: tflint -f compact
+
+      - run: tflint --format compact --recursive
